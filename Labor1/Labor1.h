@@ -10,6 +10,7 @@
 #include <chrono>
 #include <array>
 #include <cmath>
+#include <fstream>
 
 /// 8: struct Person mit angeforderten Attributen
 struct Alter {
@@ -21,13 +22,19 @@ struct Alter {
 struct Person {
     std::string vorname;
     std::string nachname;
-    std::chrono::year_month_day geburtstag;
+    std::string geburtstag;
     Alter alterInJTS;
 };
 
-double calcPow(double in, double power);
+double calcPow(double const in, double const power);
 
-int localChange(int valIn);
+void localChange(int valIn);
+
+void returnPersonen(std::vector<Person> const personen);
+
+std::vector<Person> readPersonen(std::string const filename);
+
+Person createPerson(std::string const vorname, std::string const nachname, std::string const geburtstag);
 
 Alter AlterBerechnen(Alter alter);
 
