@@ -26,18 +26,28 @@ std::vector<Person> readPersonen(std::string const filename){
     std::ifstream infile(filename);
     Person p;
 
-    if (!infile){
-        std::cout << "Fehler beim lesen der Datei" << std::endl;
-        exit(1);
+    try{
+
+        infile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
+
+        if (!infile){
+            std::cout << "Fehler beim lesen der Datei" << std::endl;
+            exit(1);
+        }
+
+        while(!infile.eof()){
+            //infile.exceptions(std::ifstream::eofbit);
+            infile >> p.vorname;
+            infile >> p.nachname;
+            infile >> p.geburtstag;
+
+            pv.push_back(p);
+        }
+    }
+    catch (std::exception &e){
+        std::cout << e.what() << std::endl;
     }
 
-    while(!infile.eof()){
-        infile >> p.vorname;
-        infile >> p.nachname;
-        infile >> p.geburtstag;
-
-        pv.push_back(p);
-    }
     return pv;
 }
 

@@ -11,6 +11,7 @@
 #include <array>
 #include <cmath>
 #include <fstream>
+#include <exception>
 
 /// 8: struct Person mit angeforderten Attributen
 struct Alter {
