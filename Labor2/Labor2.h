@@ -8,7 +8,13 @@
 
 class Labor2 {
 public:
-    void Test();
+    Labor2(int const &x, int const &y);
+    void SetX(int const &x);
+    int GetX() const;       // Ausschließlich Lesezugriff
+    void SetY(int const &y);
+    int GetY() const;
+private:
+    int _x, _y;
 };
 
 

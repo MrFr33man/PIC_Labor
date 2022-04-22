@@ -8,9 +8,7 @@ int main(int argc, char *argv[]) {
     /// und Ausgabe durch eine for-Schleife -----------------
     vector<string> proArgs (argv, argv+argc);
 
-    for (string arg : proArgs){
-        cout << "Programmargument: " << arg << endl;
-    }
+    returnArgs(proArgs);
     /// -----------------------------------------------------
 
     cout << "---------------------------------------------------------" << endl;
@@ -42,7 +40,7 @@ int main(int argc, char *argv[]) {
 
     /// 6: Lokale Veränderung der Ganzzahlvariable --------------
     cout << "Variable vor Funktion: " << castedInt << endl;
-    localChange(castedInt);
+    localChange(castedInt); // Call by Reference nicht möglich, da castedInt const ist und in der Methode verändert würde
     cout << "Variable nach verlassen der Funktion: " << castedInt << endl;
     /// ---------------------------------------------------------
 
@@ -71,9 +69,10 @@ int main(int argc, char *argv[]) {
 
     cout << "---------------------------------------------------------" << endl;
 
-    /// 10: Einlesen von Personendaten aus Textdatei ----------------
+    /// 10, 11 & 12: Einlesen von Personendaten aus Textdatei, als Programmargument übergeben
+    /// mit Abfangen von Exeptions
 
-    string filename {"lab1.txt"};
+    string filename {argv[1]};
 
     vector<Person> personenVektorFromFile {readPersonen(filename)};
 
@@ -83,28 +82,24 @@ int main(int argc, char *argv[]) {
 
     cout << "---------------------------------------------------------" << endl;
 
-    ///
+    /// 13: Berechnugn des Alters in Jahren, Tagen und Stunden
 
-    /*
+    Person muster {"Max/ine", "Musterdiverslol"};
 
-    /// ---------------------------------------------------------
+    cout << "Bitte geben Sie ein Geburtsdatum (TT-MM-JJJJ) ein: " << endl;
 
-    /// Array
-    array<string, 4> ZahlenWorte {"Null", "Eins", "Zwei", "Drei"};
+    cin >> muster.geburtstag;
 
-    for(auto const &el: ZahlenWorte){
-        cout << el << endl;
-    }
+    muster.alterInJTS = calcAge(muster.geburtstag);
+
+    returnPerson(muster);
+
+    cout << "---------------------------------------------------------" << endl;
+
+    /// 14: Ausgabe einer Zahl als Klartext:
+
+    cout << "Max Mustermann ist " << numToStr(muster.alterInJTS.jahr) << " Jahre alt!" << endl;
 
 
-    /// -------------------------------------------------
-
-
-
-    cout << "Geburtstag: " << static_cast<unsigned>(p1.geburtstag.day()) <<
-     "." << static_cast<unsigned>(p1.geburtstag.month()) <<
-     "." << static_cast<int>(p1.geburtstag.year()) << endl;
-
-     */
     return 0;
 }

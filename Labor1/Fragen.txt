@@ -1,0 +1,80 @@
+Fragen zum Laborversuch
+
+Wann setze ich Pointer ein?
+Ein Pointer ist eine Variable, die die Speicheradresse als Wert speichert.
+
+Wann setze ich Referenzen ein?
+Eine Referenz entspricht einem const-Zeiger, der bei jedem Zugriff automatisch dereferenziert wird.
+
+Was ist der Unterschied zwischen Pointern und Referenzen?
+Referenz muÿ initialisiert werden
+Referenz kann nur einmal mit Objekt initialisiert werden
+Spätere Umlenkung des Verweises auf ein anderes Objekt ist nicht möglich
+Referenz kann wie ganz normale Variablen verwendet werden, d.h. die
+Zeiger-typische Dereferenzierungssyntax entfällt
+Referenz kann nicht nullptr sein, da sie immer auf ein Objekt verweist
+Referenzen können nicht in Arrays gespeichert werden
+
+Wozu setzt man “const” ein?
+Const macht Werte unveränderbar. Man sollte es daher wann immer möglich nutzen, um eine
+falsche Nutzung der Objekte,  Variablen und Funktion zu vermeiden.
+
+Was ist call-by-value und call-by-reference? Unterschiede und Einsatzzwecke?
+
+Eine Funktionsdeklaration beinhaltet einen Pointer als Argument, bspw. “void func(int *value);”.
+Inwiefern kann/muss der Aufruf dieser Funktion als call-by-value aufgefasst werden?
+
+Müssen zum Erhalt des Testats beantwortet werden:
+
+Wann setze ich Pointer ein?
+Pointer ermöglichen es, das Funktionen ihre beim Aufruf übergebenen Variablen verändern können. dynamische Verwaltung von Speicherplatz,
+memory managment, funktioniert immer über Pointer. wenn man sein Programm optimieren will, Geschwindigkeit, Speicherbedarf
+sind Pointer immer sehr beliebt.
+Die Verwendung von Zeigern kann in bestimmten Fällen den Programmablauf beschleunigen oder helfen, Speicherplatz zu sparen:
+
+    Ist die von einem Programm im Speicher zu haltende Datenmenge am Programmstart unbekannt, so kann genau so viel Speicher angefordert werden, wie benötigt wird (Dynamische Speicherverwaltung).
+    Es ist möglich, während des Programmablaufs nicht mehr benötigten Speicher wieder an das Betriebssystem zurückzugeben.
+    Bei der Verwendung von Feldern bzw. Vektoren kann man mittels Zeigern schnell innerhalb des Feldes springen und navigieren. Anstatt einen Index zu verwenden und so die Feldelemente darüber anzusprechen, setzt man zu Beginn des Ablaufs einen Zeiger auf den Anfang des Feldes und inkrementiert diesen Zeiger bei jedem Durchlauf. Die tatsächliche Schrittweite des Inkrements richtet sich nach dem betreffenden Datentyp. Diese Art des Zugriffs auf Felder wird in vielen Programmiersprachen und Compilern an manchen Stellen intern automatisch so umgesetzt.
+    Verweise auf Speicherbereiche können geändert werden, z. B. zur Sortierung von Listen, ohne die Elemente umkopieren zu müssen (dynamische Datenstrukturen).
+    Bei Funktionsaufrufen kann durch die Übergabe eines Zeigers auf ein Objekt vermieden werden, das Objekt selbst zu übergeben, was eine in bestimmten Fällen sehr zeitaufwendige Anfertigung einer Kopie des Objektes erfordern würde (Referenzparameter).
+    Anstatt Variablen jedes Mal zu kopieren und so jedes Mal erneut Speicherplatz zur Verfügung zu stellen, kann man in manchen Fällen einfach mehrere Zeiger auf dieselbe Variable verweisen lassen.
+    Bei Zeichenketten können direkt Speicherinhalte angesprochen werden, ohne über Objekte und Funktionen gehen zu müssen.
+**Änderungen an den Parametern haben keine Auswirkung
+auf ursprüngliche Werte
+
+Wann setze ich Referenzen ein?
+Bei mehrfacher Verwendung, kann eine Referenz viel Tipparbeit ersparen und vor allem erhöht sich die Übersichtlichkeit des Quellcodes.
+Außerdem kann diese Vorgehensweise die Performance verbessern, da der Zugriff auf Daten in Klassen oder Feldern durch eine Referenzdefinition
+vereinfacht wird.
+++Änderungen an den Parametern wirken sich auf ursprüngliche Werte aus**
+
+Was ist der Unterschied zwischen Pointern und Referenzen?
+Ein Zeiger in C++ ist eine Variable, die die Speicheradresse einer anderen Variablen enthält.
+Eine Referenz ist ein Alias ​​für eine bereits existierende Variable. Sobald eine Referenz auf eine Variable initialisiert wurde,
+kann sie nicht geändert werden, um auf eine andere Variable zu verweisen.
+Daher ähnelt eine Referenz einem konstanten Zeiger.
+https://www.educative.io/edpresso/differences-between-pointers-and-references-in-cpp
+
+
+
+Wozu setzt man “const” ein?
+Wenn Sie nicht möchten, dass andere (oder Sie selbst) vorhandene Variablenwerte überschreiben,
+verwenden Sie das constSchlüsselwort (dadurch wird die Variable als "Konstante" deklariert,
+was unveränderlich und schreibgeschützt bedeutet )
+Sie sollten die Variable immer als konstant deklarieren, wenn Sie Werte haben, die sich wahrscheinlich nicht ändern:
+
+
+Was ist call-by-value und call-by-reference? Unterschiede und Einsatzzwecke?
+Call-by-Value – Wertparameter
+In vielen Programmiersprachen werden im Normalfall Parameter an Funktionen mithilfe einer Kopie übergeben. Das wird als call-by-value bezeichnet.
+Das bedeutet, dass innerhalb der aufgerufenen Funktion mit der Kopie gearbeitet wird und sich Änderungen nicht auf den ursprünglichen Wert auswirken.
+Call-by-Reference – Referenzparameter
+Bei einer Übergabe als Referenz wirken sich Änderungen an den Parametern auf die Ursprünglichen Werte aus. In der Praxis wird das zum Beispiel
+verwendet, wenn eine Funktion mehrere Rückgabewerte hätte. Nachfolgend ein Beispiel für eine Funktion, die call-by-reference nutzt
+Unterschied: Call-by-Value übergibt eine Kopie der Variablen, während Call-by-reference die Variable übergibt.
+Bei Call-by-Value werden tatsächliche und formale Argumente an verschiedenen Stellen erzeugt, während bei Call-by-Reference
+tatsächliche und formale Argumente an der gleichen Stelle erzeugt werden.
+
+
+Eine Funktionsdeklaration beinhaltet einen Pointer als Argument, bspw. “void func(int *value);”. Inwiefern kann/muss der Aufruf dieser Funktion als
+call-by-value aufgefasst werden?
